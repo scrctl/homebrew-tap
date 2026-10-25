@@ -12,7 +12,7 @@ class Scrctl < Formula
   depends_on "gettext"
   depends_on "nlohmann-json"
   depends_on "scrctl/tap/xdb"
-  depends_on "sdl2"
+  depends_on "sdl2-compat"
 
   resource "xdb-client" do
     url "https://github.com/scrctl/XDeviceBridge/archive/refs/tags/v1.0.0.tar.gz"

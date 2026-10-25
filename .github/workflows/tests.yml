@@ -17,9 +17,9 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ macos-26 ]
+        os: [ macos-15 ]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             container:
               image: ghcr.io/homebrew/brew:main
               options: --privileged

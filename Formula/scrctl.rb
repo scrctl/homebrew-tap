@@ -21,6 +21,11 @@ class Scrctl < Formula
 
   def install
     resource("xdb-client").stage buildpath/"xdb"
+    # The release archive has no .git directory. Record its exact client gitlink
+    # rather than making provenance generation depend on a Git checkout.
+    inreplace "cmake/SourceMaterials.cmake",
+              /execute_process\(COMMAND git -C.*?COMMAND_ERROR_IS_FATAL ANY\)/m,
+              'set(SCRCTL_XDB_REVISION "fea3f0f8fcefe1a468645e3891da650249d5f216")'
     # Upstream's relocatable desktop layout keeps private libraries beside the tool.
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args(install_prefix: libexec),
                    "-DSCRCTL_BUILD_TESTS=OFF", "-DSCRCTL_FETCH_DEPENDENCIES=OFF"

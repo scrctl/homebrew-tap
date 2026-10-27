@@ -14,6 +14,15 @@ defaults:
     shell: bash -xeuo pipefail {0}
 
 jobs:
+  update-script:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Test release updater without network or credentials
+        run: python3 -B -m unittest discover -s tests -v
+
   test-bot:
     strategy:
       matrix:

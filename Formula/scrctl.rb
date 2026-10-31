@@ -1,15 +1,10 @@
 class Scrctl < Formula
   desc "Mirror and control iOS devices from a native desktop window"
   homepage "https://github.com/scrctl/scrctl"
-  url "https://github.com/scrctl/scrctl/archive/refs/tags/v1.3.0.tar.gz"
-  sha256 "a63c836dff70dd8dbce92aecf578ef4af487b48ad81e035885d55f29e81ac555"
+  url "https://github.com/scrctl/scrctl/archive/refs/tags/v1.3.1.tar.gz"
+  sha256 "ee4bfbd70c59880d75571fec919efbd039276842f9981524da98c0e7d5b3b876"
   license "Apache-2.0"
 
-  bottle do
-    root_url "https://github.com/scrctl/homebrew-tap/releases/download/scrctl-1.3.0"
-    sha256               arm64_sequoia: "5c977862416e382259a7de6a04b3e467349680549f688bbcf2bdc2f4c7e77d3d"
-    sha256 cellar: :any, x86_64_linux:  "504eb4dd1e5724bf63e4015c86210b4adfd72e43d223b622c24cfdc0b4276dd3"
-  end
 
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build

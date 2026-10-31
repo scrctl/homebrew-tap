@@ -5,6 +5,12 @@ class Scrctl < Formula
   sha256 "ee4bfbd70c59880d75571fec919efbd039276842f9981524da98c0e7d5b3b876"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://github.com/scrctl/homebrew-tap/releases/download/scrctl-1.3.1"
+    sha256               arm64_sequoia: "668e86f780a90919c8fed27a80efe50e4292067f6bb4978afe858ed3cf78a8a2"
+    sha256 cellar: :any, x86_64_linux:  "4005729602b80337f4d085240b5e89c13b14934b3c67cea58efbeff40fda75d6"
+  end
+
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "cli11"

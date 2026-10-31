@@ -5,7 +5,6 @@ class Scrctl < Formula
   sha256 "ee4bfbd70c59880d75571fec919efbd039276842f9981524da98c0e7d5b3b876"
   license "Apache-2.0"
 
-
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "cli11"

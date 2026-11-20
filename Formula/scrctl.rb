@@ -1,15 +1,9 @@
 class Scrctl < Formula
   desc "Mirror and control iOS devices from a native desktop window"
   homepage "https://github.com/scrctl/scrctl"
-  url "https://github.com/scrctl/scrctl/archive/refs/tags/v1.3.1.tar.gz"
-  sha256 "ee4bfbd70c59880d75571fec919efbd039276842f9981524da98c0e7d5b3b876"
+  url "https://github.com/scrctl/scrctl/archive/refs/tags/v1.4.0.tar.gz"
+  sha256 "6356ad209f9468aa3d4c5c71962cf9c276613fe5e49131d8af3fd7db467bd6f5"
   license "Apache-2.0"
-
-  bottle do
-    root_url "https://github.com/scrctl/homebrew-tap/releases/download/scrctl-1.3.1"
-    sha256               arm64_sequoia: "668e86f780a90919c8fed27a80efe50e4292067f6bb4978afe858ed3cf78a8a2"
-    sha256 cellar: :any, x86_64_linux:  "4005729602b80337f4d085240b5e89c13b14934b3c67cea58efbeff40fda75d6"
-  end
 
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
@@ -21,8 +15,8 @@ class Scrctl < Formula
   depends_on "sdl2-compat"
 
   resource "xdb-client" do
-    url "https://github.com/scrctl/XDeviceBridge/archive/refs/tags/v1.6.0.tar.gz"
-    sha256 "effb3c6e35832218f810f4a1e503d3b6f7b5c8519342c69b60373ead8f8c9a9f"
+    url "https://github.com/scrctl/XDeviceBridge/archive/refs/tags/v1.7.0.tar.gz"
+    sha256 "b83eb525f83e8727638aefadf08c8fd0aca483e34b23953c3941351dc4efc7cc"
   end
 
   def install
@@ -31,7 +25,7 @@ class Scrctl < Formula
     # rather than making provenance generation depend on a Git checkout.
     inreplace "cmake/SourceMaterials.cmake",
               /execute_process\(COMMAND git -C.*?COMMAND_ERROR_IS_FATAL ANY\)/m,
-              'set(SCRCTL_XDB_REVISION "1fe145db774c5709eda8e047da26fa9e56e69aad")'
+              'set(SCRCTL_XDB_REVISION "181c0cba0f70b5de36a20e686a26dcfd7d58ca34")'
     # Upstream's relocatable desktop layout keeps private libraries beside the tool.
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args(install_prefix: libexec),
                    "-DSCRCTL_BUILD_TESTS=OFF", "-DSCRCTL_FETCH_DEPENDENCIES=OFF"

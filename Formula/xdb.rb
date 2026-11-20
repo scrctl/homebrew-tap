@@ -1,15 +1,9 @@
 class Xdb < Formula
   desc "Native iOS device bridge for pairing, control and media capture"
   homepage "https://github.com/scrctl/XDeviceBridge"
-  url "https://github.com/scrctl/XDeviceBridge/archive/refs/tags/v1.6.0.tar.gz"
-  sha256 "effb3c6e35832218f810f4a1e503d3b6f7b5c8519342c69b60373ead8f8c9a9f"
+  url "https://github.com/scrctl/XDeviceBridge/archive/refs/tags/v1.7.0.tar.gz"
+  sha256 "b83eb525f83e8727638aefadf08c8fd0aca483e34b23953c3941351dc4efc7cc"
   license "LGPL-3.0-only"
-
-  bottle do
-    root_url "https://github.com/scrctl/homebrew-tap/releases/download/xdb-1.6.0"
-    sha256 cellar: :any, arm64_sequoia: "441c63f6d444c5e9c39ad774e40f7350488278ea564b0b731108e6ae9a9d2fbd"
-    sha256 cellar: :any, x86_64_linux:  "e29a1a5440d9d8d2ec91c9d7a1f3e725cf2035ee078b72f973f881af245653c6"
-  end
 
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build

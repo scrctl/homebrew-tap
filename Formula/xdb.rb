@@ -5,6 +5,12 @@ class Xdb < Formula
   sha256 "b83eb525f83e8727638aefadf08c8fd0aca483e34b23953c3941351dc4efc7cc"
   license "LGPL-3.0-only"
 
+  bottle do
+    root_url "https://github.com/scrctl/homebrew-tap/releases/download/xdb-1.7.0"
+    sha256 cellar: :any, arm64_sequoia: "70d4e26a2a72332b3c7e15d93c540d424972d2b0c68db12bf428db74a620a80a"
+    sha256 cellar: :any, x86_64_linux:  "5fde3a5a827ac6994e908c142ed4b70839dfd270741035fb01768da5aa108235"
+  end
+
   depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "ffmpeg"

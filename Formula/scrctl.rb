@@ -33,9 +33,9 @@ class Scrctl < Formula
               /execute_process\(COMMAND git -C.*?COMMAND_ERROR_IS_FATAL ANY\)/m,
               'set(SCRCTL_XDB_REVISION "181c0cba0f70b5de36a20e686a26dcfd7d58ca34")'
     # Upstream's relocatable desktop layout keeps private libraries beside the tool.
-    # Preserve per-file compiler flags, including jitterentropy's required -O0.
-    ENV["HOMEBREW_CCCFG"] = ENV.fetch("HOMEBREW_CCCFG", "").delete("O")
+    # The Homebrew Ninja shim strips jitterentropy's required per-file -O0.
     system "cmake", "-S", ".", "-B", "build", "-G", "Ninja", *std_cmake_args(install_prefix: libexec),
+                   "-DCMAKE_MAKE_PROGRAM=#{Formula["ninja"].opt_bin/"ninja"}",
                    "-DXDB_FETCH_DEPENDENCIES=OFF"
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"

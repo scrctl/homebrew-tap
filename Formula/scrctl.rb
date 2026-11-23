@@ -6,6 +6,7 @@ class Scrctl < Formula
   license "Apache-2.0"
 
   depends_on "cmake" => :build
+  depends_on "ninja" => :build
   depends_on "nlohmann-json" => :build
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
@@ -32,7 +33,8 @@ class Scrctl < Formula
               /execute_process\(COMMAND git -C.*?COMMAND_ERROR_IS_FATAL ANY\)/m,
               'set(SCRCTL_XDB_REVISION "181c0cba0f70b5de36a20e686a26dcfd7d58ca34")'
     # Upstream's relocatable desktop layout keeps private libraries beside the tool.
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args(install_prefix: libexec),
+    # Keep the compiler flags required by aws-lc-sys's jitterentropy build.
+    system "cmake", "-S", ".", "-B", "build", "-G", "Ninja", *std_cmake_args(install_prefix: libexec),
                    "-DXDB_FETCH_DEPENDENCIES=OFF"
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"

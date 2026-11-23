@@ -6,18 +6,18 @@ class Scrctl < Formula
   license "Apache-2.0"
 
   depends_on "cmake" => :build
+  depends_on "nlohmann-json" => :build
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
-  depends_on "nlohmann-json" => :build
   depends_on "scrctl/tap/xdb"
   depends_on "sdl3"
-
-  deny_network_access!
 
   resource "xdb-client" do
     url "https://github.com/scrctl/XDeviceBridge/archive/refs/tags/v1.7.0.tar.gz"
     sha256 "b83eb525f83e8727638aefadf08c8fd0aca483e34b23953c3941351dc4efc7cc"
   end
+
+  deny_network_access!
 
   def fetch
     system "cargo", "fetch", *std_cargo_fetch_args, "--manifest-path", "core/Cargo.toml"
